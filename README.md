@@ -154,11 +154,11 @@ sh
 - Twitter: [@jamesasibeymanu](https://twitter.com/jamesasibeymanu)
 - LinkedIn: [](https://www.linkedin.com/in/khaled-al-khateeb-3a1013247/)
 
-👤 ****
+👤  **Suleiman Olaade**
 
-- GitHub: []()
-- Twitter: []()
-- LinkedIn: []()
+- GitHub: [@Ceemos96](https://github.com/Ceemos96)
+- Twitter: [@Ceemos_dev](https://twitter.com/Ceemos_dev)
+- LinkedIn: [suleiman-olaide](https://www.linkedin.com/in/suleiman-olaide)
 
 👤 **Mohamed Abdulhakim**
 Software Developer | Javascript, React, Redux, MongoDB, PostgreSql, Ruby. | Good with Frontend. #OPENTOWORK
