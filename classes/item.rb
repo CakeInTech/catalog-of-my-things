@@ -9,4 +9,4 @@ class Item
       @publish_date = publish_date
       @archived = true
     end
-  end
+end
