@@ -7,3 +7,8 @@ CREATE TABLE item (
     archived BOOLEAN,
     FOREIGN KEY(genre_id) REFERENCES genre(id)
 )
+
+CREATE TABLE genre (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50),
+);
