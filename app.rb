@@ -1,21 +1,12 @@
-require './book'
-require './music_album'
-require './game'
-require './author'
-require './label'
-require './genre'
+require './classes/book'
+require './classes/music_a'
+require './classes/game'
+require './classes/author'
+require './classes/label'
+require './classes/genre'
 
 class App
-  def initialize
-    @books = []
-    @music_album = []
-    @games = []
-    @genres = []
-    @labels = []
-    @authors = []
-  end
-
-  def process_option(option)
+  def process_options(option)
     case option
     when 1
       list_books
@@ -36,24 +27,24 @@ class App
     when 9
       add_game
     else
-      puts "Invalid option. Please choose a valid option."
+      puts 'Invalid option. Please choose a valid option.'
     end
   end
 
   def list_music_albums
     if @music_albums.empty?
-      puts "No music albums have been added yet."
+      puts 'No music albums have been added yet.'
     else
-      puts "List of music albums:"
-      @music_album.each { |album| puts "#{album.name} by #{album.artist}" }
+      puts 'List of music albums:'
+      @music_albums.each { |album| puts "#{album.name} by #{album.artist}" }
     end
   end
 
   def list_genres
     if @genres.empty?
-      puts "No genres have been added yet."
+      puts 'No genres have been added yet.'
     else
-      puts "List of genres:"
+      puts 'List of genres:'
       @genres.each { |genre| puts genre }
     end
   end
