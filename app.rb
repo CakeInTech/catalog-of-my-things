@@ -7,28 +7,49 @@ require './classes/genre'
 
 class App
   def process_options(option)
-    case option
-    when 1
-      list_books
-    when 2
+    case option 
+    when 1..3
+      list_items(option)
+    when 4..5
+      list_genres_or_labels
+    when 6 
+      list_authors
+    when 7..9 
+      add_item(option)
+    else 
+      puts "Invalid option. Please choose a valid option."
+    end
+  end
+
+  def list_items(option)
+    case option 
+    when 1 
+      list_books 
+    when 2 
       list_music_albums
-    when 3
+    when 3 
       list_games
+    end
+  end
+
+  def list_genres_or_labels(option)
+    case option
     when 4
       list_genres
     when 5
-      list_labels
-    when 6
-      list_authors
-    when 7
+      list_lables
+    end 
+  end
+
+  def add_item(option)
+    case option
+    when 7 
       add_book
-    when 8
+    when 8 
       add_music_album
-    when 9
+    when 9 
       add_game
-    else
-      puts 'Invalid option. Please choose a valid option.'
-    end
+    end 
   end
 
   def list_music_albums
@@ -49,3 +70,7 @@ class App
     end
   end
 end
+
+# Metrics/CyclomaticComplexity: Cyclomatic complexity for process_options is too high. [10/7]
+#   def process_options(option) ...
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
