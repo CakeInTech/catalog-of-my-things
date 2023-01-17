@@ -12,3 +12,9 @@ CREATE TABLE genre (
   id SERIAL PRIMARY KEY,
   name VARCHAR(50),
 );
+
+CREATE TABLE musicalbum (
+  id SERIAL PRIMARY KEY,
+  on_spotify BOOLEAN,
+  publish_date Date
+);
