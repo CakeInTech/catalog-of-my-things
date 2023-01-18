@@ -51,31 +51,31 @@ class App
       @genres.each { |genre| puts genre }
     end
   end
-end
-
-def add_genre(item)
-  puts "Add Name"
-  name = gets.chomp
-  genre = Genre.new(name)
-  genre.add_item(item)
-  puts "Genre created successfully"
-end
-
-def add_music_album 
-  puts 'Add spotify(yes or no):'
-  on_spotify = gets.chomp
-  puts 'Add publish date (YYYY-MM-DD):'
-  publish_date = gets.chomp
-  begin
-    Date.parse(publish_date)
-  rescue 
-    puts 'Invalid date format. Please use YYYY-MM-DD.'
-    return  
+  def add_genre(item)
+    puts 'Add Name'
+    name = gets.chomp
+    genre = Genre.new(name)
+    genre.add_item(item)
+    puts 'Genre created successfully'
   end
-  music_albm = MusicAlbum.new(on_spotify, publish_date)
-  add_genre(music_album)
-  puts 'Music Album created successfully'
+  
+  def add_music_album
+    puts 'Add spotify(yes or no):'
+    on_spotify = gets.chomp
+    puts 'Add publish date (YYYY-MM-DD):'
+    publish_date = gets.chomp
+    begin
+      Date.parse(publish_date)
+    rescue StandardError
+      puts 'Invalid date format. Please use YYYY-MM-DD.'
+      return
+    end
+    music_album = MusicAlbum.new(on_spotify, publish_date)
+    add_genre(music_album)
+    puts 'Music Album created successfully'
+  end
 end
+
 
 # Metrics/CyclomaticComplexity: Cyclomatic complexity for process_options is too high. [10/7]
 #   def process_options(option) ...
