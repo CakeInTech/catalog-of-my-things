@@ -53,6 +53,21 @@ class App
   end
 end
 
+
+
+def add_music_album 
+  puts 'Add spotify(yes or no):'
+  on_spotify = gets.chomp
+  puts 'Add publish date (YYYY-MM-DD):'
+  publish_date = gets.chomp
+  begin
+    Date.parse(publish_date)
+  rescue 
+    puts 'Invalid date format. Please use YYYY-MM-DD.'
+    return  
+  end
+end
+
 # Metrics/CyclomaticComplexity: Cyclomatic complexity for process_options is too high. [10/7]
 #   def process_options(option) ...
 #   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
