@@ -58,6 +58,7 @@ class App
     genre = Genre.new(name)
     genre.add_item(item)
     puts 'Genre created successfully'
+    store_genre(genre)
   end
 
   def add_music_album
