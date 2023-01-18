@@ -36,11 +36,9 @@ class App
   end
 
   def list_music_albums
-    if @music_albums.empty?
-      puts 'No music albums have been added yet.'
-    else
-      puts 'List of music albums:'
-      @music_albums.each { |album| puts "#{album.name} by #{album.artist}" }
+    music_album = File.size('./classes/music_album.json').zero? ? [] : JSON.parse(File.read('./classes/music_album.json'))
+    music_album.each do |album|
+      puts "Spotify: #{album['on_spotify']}, Publish Date: #{music['publish_date']}, Genre Name: #{album['name']}"
     end
   end
 
