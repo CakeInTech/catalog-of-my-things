@@ -72,6 +72,9 @@ def add_music_album
     puts 'Invalid date format. Please use YYYY-MM-DD.'
     return  
   end
+  music_albm = MusicAlbum.new(on_spotify, publish_date)
+  add_genre(music_album)
+  puts 'Music Album created successfully'
 end
 
 # Metrics/CyclomaticComplexity: Cyclomatic complexity for process_options is too high. [10/7]
