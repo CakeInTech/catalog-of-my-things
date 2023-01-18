@@ -53,7 +53,13 @@ class App
   end
 end
 
-
+def add_genre(item)
+  puts "Add Name"
+  name = gets.chomp
+  genre = Genre.new(name)
+  genre.add_item(item)
+  puts "Genre created successfully"
+end
 
 def add_music_album 
   puts 'Add spotify(yes or no):'
