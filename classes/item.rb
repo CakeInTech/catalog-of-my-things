@@ -24,5 +24,4 @@ class Item
     genre.add_item << self unless genre.items.include? self
     @genre = Genre
   end
-  
 end

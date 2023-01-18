@@ -1,3 +1,4 @@
+require 'pry'
 require 'json'
 require './classes/book'
 require './classes/music_album'
@@ -24,13 +25,13 @@ class App
     end
   end
 
-  def add_item(option)
+  def add_item_options(option)
     case option
-    when 7
+    when '7'
       add_book
-    when 8
+    when '8'
       add_music_album
-    when 9
+    when '9'
       add_game
     end
   end
@@ -38,20 +39,21 @@ class App
   def list_music_albums
     music_album = File.size('./classes/music_album.json').zero? ? [] : JSON.parse(File.read('./classes/music_album.json'))
     music_album.each do |album|
-      puts "Spotify: #{album['on_spotify']}, Publish Date: #{music['publish_date']}, Genre Name: #{album['name']}"
+      puts "Spotify: #{album['on_spotify']}, Publish Date: #{album['publish_date']}, Genre Name: #{album['name']}"
     end
   end
 
-  def list_genres
-    if @genres.empty?
-      puts 'No genres have been added yet.'
-    else
-      puts 'List of genres:'
-      @genres.each { |genre| puts genre }
+  def list_all_genre
+    genre = File.size('./classes/genre.json').zero? ? [] : JSON.parse(File.read('./classes/genre.json'))
+    puts '    '
+    genre.each do |genres|
+      puts "Name: #{genres['name']}"
     end
+    puts '    '
   end
 
   def add_genre(item)
+    # binding.pry
     puts 'Add Name'
     name = gets.chomp
     genre = Genre.new(name)
