@@ -1,18 +1,6 @@
 require_relative './app'
 
 class Main
-  def start
-    new_app = App.new
-    loop do
-      select_option
-      option = gets.chomp.to_i
-      break if option == 10
-
-      new_app.select_option(option)
-      new_app.add_item(option)
-    end
-  end
-
   def select_option
     puts 'Welcome to the catalog app'
     puts 'Please choose an option by entering a number:'
@@ -26,6 +14,18 @@ class Main
     puts '8  - Add a music album'
     puts '9  - Add a game'
     puts '10 - exit'
+  end
+
+  def start
+    new_app = App.new
+    loop do
+      select_option
+      option = gets.chomp
+      break if option == '10'
+
+      new_app.select_option(option)
+      new_app.add_item_options(option)
+    end
   end
 end
 
