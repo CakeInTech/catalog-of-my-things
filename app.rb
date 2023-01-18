@@ -51,6 +51,7 @@ class App
       @genres.each { |genre| puts genre }
     end
   end
+
   def add_genre(item)
     puts 'Add Name'
     name = gets.chomp
@@ -58,7 +59,7 @@ class App
     genre.add_item(item)
     puts 'Genre created successfully'
   end
-  
+
   def add_music_album
     puts 'Add spotify(yes or no):'
     on_spotify = gets.chomp
@@ -74,8 +75,26 @@ class App
     add_genre(music_album)
     puts 'Music Album created successfully'
   end
-end
 
+  def store_genre(genre)
+    obj = {
+      id: genre.id,
+      name: genre.name
+    }
+
+    stored_genres = read_genres_from_file
+    stored_genres << obj
+    write_genres_to_file(stored_genres)
+  end
+
+  def read_genres_from_file
+    File.size('./genre.json').zero? ? [] : JSON.parse(File.read('./genre.json'))
+  end
+
+  def write_genres_to_file(genres)
+    File.write('genre.json', genres.to_json)
+  end
+end
 
 # Metrics/CyclomaticComplexity: Cyclomatic complexity for process_options is too high. [10/7]
 #   def process_options(option) ...
