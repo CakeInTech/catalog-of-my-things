@@ -1,43 +1,25 @@
 require './classes/book'
-require './classes/music_a'
+require './classes/music_album'
 require './classes/game'
 require './classes/author'
 require './classes/label'
 require './classes/genre'
 
 class App
-  def process_options(option)
+  def select_option(option)
     case option
-    when 1..3
-      list_items(option)
-    when 4..5
-      list_genres_or_labels
-    when 6
-      list_authors
-    when 7..9
-      add_item(option)
-    else
-      puts 'Invalid option. Please choose a valid option.'
-    end
-  end
-
-  def list_items(option)
-    case option
-    when 1
-      list_books
-    when 2
+    when '1'
+      list_all_books
+    when '2'
       list_music_albums
-    when 3
-      list_games
-    end
-  end
-
-  def list_genres_or_labels(option)
-    case option
-    when 4
-      list_genres
-    when 5
-      list_lables
+    when '3'
+      list_all_games
+    when '4'
+      list_all_genre
+    when '5'
+      list_all_labels
+    when '6'
+      list_all_authors
     end
   end
 
