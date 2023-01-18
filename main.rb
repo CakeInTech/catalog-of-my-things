@@ -9,7 +9,7 @@ class Main
       break if option == 10
 
       new_app.select_option(option)
-      new_app.extra_option(option) if option.between?(7, 9)
+      new_app.add_item(option)
     end
   end
 
