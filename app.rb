@@ -1,3 +1,4 @@
+require 'json'
 require './classes/book'
 require './classes/music_album'
 require './classes/game'
@@ -57,6 +58,7 @@ class App
     name = gets.chomp
     genre = Genre.new(name)
     genre.add_item(item)
+    puts '     '
     puts 'Genre created successfully'
     store_genre(genre)
   end
@@ -75,6 +77,8 @@ class App
     music_album = MusicAlbum.new(on_spotify, publish_date)
     add_genre(music_album)
     puts 'Music Album created successfully'
+    puts '       '
+    store_music_album(music_album)
   end
 
   def store_genre(genre)
@@ -89,14 +93,31 @@ class App
   end
 
   def read_genres_from_file
-    File.size('./genre.json').zero? ? [] : JSON.parse(File.read('./genre.json'))
+    File.size('./classes/genre.json').zero? ? [] : JSON.parse(File.read('./classes/genre.json'))
   end
 
   def write_genres_to_file(genres)
-    File.write('genre.json', genres.to_json)
+    File.write('./classes/genre.json', genres.to_json)
+  end
+
+  def store_music_album(music_album)
+    obj = {
+      id: music_album.id,
+      on_spotify: music_album.on_spotify,
+      publish_date: music_album.publish_date,
+      name: music_album.genre.name
+    }
+
+    stored_music_albums = read_music_albums_from_file
+    stored_music_albums << obj
+    write_music_albums_to_file(stored_music_albums)
+  end
+
+  def read_music_albums_from_file
+    File.size('./classes/music_album.json').zero? ? [] : JSON.parse(File.read('./classes/music_album.json'))
+  end
+
+  def write_music_albums_to_file(music_albums)
+    File.write('./classes/music_album.json', music_albums.to_json)
   end
 end
-
-# Metrics/CyclomaticComplexity: Cyclomatic complexity for process_options is too high. [10/7]
-#   def process_options(option) ...
-#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^

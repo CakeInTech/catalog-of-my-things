@@ -19,4 +19,10 @@ class Item
     author.extra_option << self unless author.items.include? self
     @author = author
   end
+
+  def add_genre(genre)
+    genre.add_item << self unless genre.items.include? self
+    @genre = Genre
+  end
+  
 end
