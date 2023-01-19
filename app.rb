@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 require 'json'
 require './classes/book'
 require './classes/music_album'
@@ -8,6 +8,14 @@ require './classes/label'
 require './classes/genre'
 
 class App
+  def initialize
+    @books = []
+    @labels = []
+
+    list_of_labels_stored
+    list_of_books_stored
+  end
+
   def select_option(option)
     case option
     when '1'
@@ -33,6 +41,91 @@ class App
       add_music_album
     when '9'
       add_game
+    end
+  end
+
+  def add_book
+    puts 'Publisher name'
+    author = gets.chomp
+    puts 'What is the condition of the vover'
+    cover = gets.chomp
+    puts 'Date of publication (dd/mm/yyyy)'
+    date = gets.chomp
+    book = Book.new(author, cover, date)
+    @books << book
+    puts 'Add a label? Enter 1 for YES and 2 for NO'
+    option = gets.chomp.to_i
+    if option == 1
+      puts 'Enter title of the book label'
+      title = gets.chomp
+      puts 'Enter color of the book label'
+      color = gets.chomp
+      label = Label.new(title, color)
+      @labels << label
+    end
+    save_all_labels_and_books
+  end
+
+  def list_all_books
+    if @books.empty?
+      puts "\n No book is available"
+    else
+      @books.each do |book|
+        puts "\n Publisher: #{book.publisher} | Condition: #{book.cover_state}\n"
+      end
+    end
+  end
+
+  def list_all_labels
+    if @labels.empty?
+      puts 'No labels'
+    else
+      @labels.each do |label|
+        puts "Title: #{label.title} Coloe: #{label.color} "
+      end
+    end
+  end
+
+  def save_all_labels_and_books
+    book_json = []
+    @books.each do |book|
+      book_json << { publisher: book.publisher, cover_state: book.cover_state }
+    end
+    books_json = JSON.generate(book_json)
+    File.write('./json/books.json', books_json)
+    label_json = []
+    @labels.each do |label|
+      label_json << { title: label.title, color: label.color }
+    end
+    labels_json = JSON.generate(label_json)
+    File.write('./json/labels.json', labels_json)
+  end
+
+  def list_of_labels_stored
+    if File.exist?('./json/labels.json') && !File.zero?('./json/labels.json')
+      labelsfile = File.open('./json/labels.json')
+      labeljson = labelsfile.read
+      JSON.parse(labeljson).map do |label|
+        labelsjson = Label.new(label['title'], label['color'])
+        @labels << labelsjson
+      end
+      labelsfile.close
+    else
+      File.new('./json/labels.json', 'w')
+    end
+  end
+
+  def list_of_books_stored
+    if File.exist?('./json/books.json') && !File.zero?('./json/books.json')
+      bookfile = File.open('./json/books.json')
+      bookjson = bookfile.read
+      JSON.parse(bookjson).map do |book|
+        booksjson = Book.new(book['publisher'], book['cover_state'], book['publish_date'])
+        @books << booksjson
+      end
+      bookfile.close
+    else
+      File.new('./json/books.json', 'w')
     end
   end
 
