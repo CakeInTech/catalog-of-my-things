@@ -157,7 +157,7 @@ class App
   end
 
   def add_music_album
-    puts 'Add spotify(yes or no):'
+    puts 'is on_spotify(yes or no):'
     on_spotify = gets.chomp
     puts 'Add publish date (YYYY-MM-DD):'
     publish_date = gets.chomp
