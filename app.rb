@@ -47,7 +47,7 @@ class App
   def add_book
     puts 'Publisher name'
     author = gets.chomp
-    puts 'What is the condition of the vover'
+    puts 'What is the condition of the cover'
     cover = gets.chomp
     puts 'Date of publication (dd/mm/yyyy)'
     date = gets.chomp
@@ -130,14 +130,14 @@ class App
   end
 
   def list_music_albums
-    music_album = File.size('./classes/music_album.json').zero? ? [] : JSON.parse(File.read('./classes/music_album.json'))
+    music_album = File.size('./json/music_album.json').zero? ? [] : JSON.parse(File.read('./json/music_album.json'))
     music_album.each do |album|
       puts "Spotify: #{album['on_spotify']}, Publish Date: #{album['publish_date']}, Genre Name: #{album['name']}"
     end
   end
 
   def list_all_genre
-    genre = File.size('./classes/genre.json').zero? ? [] : JSON.parse(File.read('./classes/genre.json'))
+    genre = File.size('./json/genre.json').zero? ? [] : JSON.parse(File.read('./json/genre.json'))
     puts '    '
     genre.each do |genres|
       puts "Name: #{genres['name']}"
@@ -186,11 +186,11 @@ class App
   end
 
   def read_genres_from_file
-    File.size('./classes/genre.json').zero? ? [] : JSON.parse(File.read('./classes/genre.json'))
+    File.size('./json/genre.json').zero? ? [] : JSON.parse(File.read('./json/genre.json'))
   end
 
   def write_genres_to_file(genres)
-    File.write('./classes/genre.json', genres.to_json)
+    File.write('./json/genre.json', genres.to_json)
   end
 
   def store_music_album(music_album)
@@ -211,7 +211,7 @@ class App
   end
 
   def write_music_albums_to_file(music_albums)
-    File.write('./classes/music_album.json', music_albums.to_json)
+    File.write('./json/music_album.json', music_albums.to_json)
   end
 
   def add_game
