@@ -1,4 +1,3 @@
-# require 'pry'
 require 'json'
 require './classes/book'
 require './classes/music_album'
@@ -146,7 +145,6 @@ class App
   end
 
   def add_genre(item)
-    # binding.pry
     puts 'Add Name'
     name = gets.chomp
     genre = Genre.new(name)
@@ -207,7 +205,7 @@ class App
   end
 
   def read_music_albums_from_file
-    File.size('./classes/music_album.json').zero? ? [] : JSON.parse(File.read('./classes/music_album.json'))
+    File.size('./json/music_album.json').zero? ? [] : JSON.parse(File.read('./json/music_album.json'))
   end
 
   def write_music_albums_to_file(music_albums)
