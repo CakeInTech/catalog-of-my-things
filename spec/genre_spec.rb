@@ -3,15 +3,10 @@ require_relative '../classes/genre'
 
 describe Genre do
   let(:name) { ' Cake ' }
-  let(:genre_name) { ' Cake ' }
-  let(:genre) { Genre.new(name, genre_name) }
+  let(:genre) { Genre.new(name) }
   let(:item) { double('item') }
 
   describe '#initialize' do
-    it 'sets the name and genre_name attributes' do
-      expect(genre.name).to eq(genre_name)
-    end
-
     it 'sets the id to a random number between 1 and 1000' do
       expect(genre.id).to be_between(1, 1000)
     end
