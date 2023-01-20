@@ -16,7 +16,8 @@ CREATE TABLE labels (
 CREATE TABLE musicalbum (
   id SERIAL PRIMARY KEY,
   on_spotify BOOLEAN,
-  publish_date Date
+  publish_date Date,
+  can_be_archived BOOLEAN
 );
 
 CREATE TABLE genre (
