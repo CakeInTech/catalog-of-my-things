@@ -112,6 +112,8 @@ class App
     else
       File.new('./json/labels.json', 'w')
     end
+  rescue StandardError => e
+    puts "An error occurred: #{e.message}"
   end
 
   def list_of_books_stored
@@ -126,6 +128,8 @@ class App
     else
       File.new('./json/books.json', 'w')
     end
+  rescue StandardError => e
+    puts "An error occurred: #{e.message}"
   end
 
   def list_music_albums
@@ -133,6 +137,8 @@ class App
     music_album.each do |album|
       puts "Spotify: #{album['on_spotify']}, Publish Date: #{album['publish_date']}, Genre Name: #{album['name']}"
     end
+  rescue StandardError => e
+    puts "An error occurred: #{e.message}"
   end
 
   def list_all_genre
@@ -142,6 +148,8 @@ class App
       puts "Name: #{genres['name']}"
     end
     puts '    '
+  rescue StandardError => e
+    puts "An error occurred: #{e.message}"
   end
 
   def add_genre(item)
@@ -279,20 +287,28 @@ class App
   end
 
   def list_all_games
-    game = File.size('./json/game.json').zero? ? [] : JSON.parse(File.read('./json/game.json'))
-    puts '    '
-    game.each do |games|
-      puts "Author_name: #{games['author_name']} last played: #{games['last_played']}"
+    begin
+      game = File.size('./json/game.json').zero? ? [] : JSON.parse(File.read('./json/game.json'))
+      puts '    '
+      game.each do |games|
+        puts "Author_name: #{games['author_name']} last played: #{games['last_played']}"
+      end
+      puts '    '
+    rescue StandardError => e
+      puts "An error occurred: #{e.message}"
     end
-    puts '    '
   end
 
   def list_all_authors
-    author = File.size('./json/author.json').zero? ? [] : JSON.parse(File.read('./json/author.json'))
-    puts '    '
-    author.each do |authors|
-      puts "first_name: #{authors['first_name']} last_name: #{authors['last_name']}"
+    begin
+      author = File.size('./json/author.json').zero? ? [] : JSON.parse(File.read('./json/author.json'))
+      puts '    '
+      author.each do |authors|
+        puts "first_name: #{authors['first_name']} last_name: #{authors['last_name']}"
+      end
+      puts '    '
+    rescue StandardError => e
+      puts "An error occurred: #{e.message}"
     end
-    puts '    '
   end
 end
