@@ -60,7 +60,7 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 [Ruby Capstone] <a name="about-project"></a>
 
-**[Ruby Capstone]** Is a powerful and user-friendly console application built using Ruby - the ultimate tool to organize and track all your possessions including books, music albums, movies, and games. The app stores data in a JSON file, ensuring easy accessibility and seamless use every time you launch the program..
+**[Ruby Capstone]** Is the the ultimate tool to organize and track all your possessions including books, music albums, movies, and games. The app stores data in a JSON file, ensuring easy accessibility and seamless use every time you launch the program..
 
 ## 🛠 Built With <a name="built-with"></a>
 
